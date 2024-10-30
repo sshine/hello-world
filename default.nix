@@ -1,9 +1,9 @@
 {pkgs ? import <nixpkgs> {}}:
-pkgs.stdenv.mkDerivation {
-  # This derivation produces a Nix package
+pkgs.rustPlatform.buildRustPackage {
   name = "hello-world";
   version = "0.1.0";
   src = ./.;
+  cargoHash = "sha256-V3zQbp7DPhtsACAgyh5QGksd/Wp0KQ9zIHye3w9a/+I=";
 
   # Build dependencies
   nativeBuildInputs = with pkgs; [
