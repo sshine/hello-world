@@ -9,8 +9,8 @@ pkgs.rustPlatform.buildRustPackage {
   nativeBuildInputs = with pkgs; [
     rustc
     cargo
-    cargo-fmt
-    cargo-clippy
+    rustfmt
+    clippy
     pkg-config
   ];
 
