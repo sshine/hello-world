@@ -18,11 +18,14 @@ pkgs.rustPlatform.buildRustPackage {
   ];
 
   buildPhase = ''cargo build --release'';
-  checkPhase = ''cargo test'';
+  checkPhase = ''
+    cargo fmt --all -- --check
+    cargo build --all-targets
+    cargo clippy --all-targets -- -D warnings
+    cargo test --all-targets
+  '';
   installPhase = ''
     mkdir -p $out/bin
     cp target/release/hello-world $out/bin/
   '';
-
-  doCheck = true;
 }

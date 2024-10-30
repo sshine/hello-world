@@ -1,4 +1,4 @@
-name: "Test"
+name: Rust CI with Nix
 
 on:
   workflow_dispatch:
@@ -13,4 +13,4 @@ jobs:
     - uses: cachix/install-nix-action@v27
       with:
         nix_path: nixpkgs=channel:nixos-unstable
-    - run: nix-build
+    - run: nix-build --arg doCheck true --arg doBuild false
